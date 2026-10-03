@@ -1,0 +1,18 @@
+# The Audited Tool Bridge - MCP Server image (Week 6 project)
+#
+# Runs mcp_server/server.py over Streamable HTTP. Simple, single-stage
+# image appropriate for a learning project — see Week 1's Dockerfile
+# for what a hardened production image would add.
+
+FROM python:3.12-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY mcp_server/ ./mcp_server/
+
+EXPOSE 8765
+
+CMD ["python", "-m", "mcp_server.server"]

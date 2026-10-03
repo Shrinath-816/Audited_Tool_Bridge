@@ -1,0 +1,25 @@
+# Runs the MCP server and the agent service together.
+#
+# Usage:
+#   1. Set MCP_SERVER_URL=http://mcp_server:8765/mcp in .env (service
+#      name, not localhost — service-to-service DNS inside compose)
+#   2. docker compose up --build
+
+services:
+  mcp_server:
+    build:
+      context: .
+      dockerfile: Dockerfile.mcp_server
+    ports:
+      - "8765:8765"
+
+  agent:
+    build:
+      context: .
+      dockerfile: Dockerfile.agent
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - mcp_server
