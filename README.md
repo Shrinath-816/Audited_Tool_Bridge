@@ -1,4 +1,4 @@
-# The Audited Tool Bridge — Week 6 Project
+# The Audited Tool Bridge — 
 
 Legacy enterprise APIs (order lookup, refunds, support tickets)
 exposed as a standardized, secure MCP server — with a client-side
